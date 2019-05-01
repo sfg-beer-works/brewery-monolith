@@ -16,6 +16,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <description>SFG Brewery Monolith UI</description>
+    <name>SFG Brewery Monolith UI</name>
 
     <licenses>
         <license>
