@@ -3,18 +3,37 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <parent>
-        <artifactId>sfg-brewery-parent</artifactId>
-        <groupId>com.github.sfg-beer-works</groupId>
-        <version>0.0.1-SNAPSHOT</version>
-    </parent>
-
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>sfg.brewery</groupId>
+    <parent>
+        <groupId>com.github.sfg-beer-works</groupId>
+        <artifactId>sfg-beer-works-bom</artifactId>
+        <version>1.0.4</version>
+    </parent>
+
+<!--    <groupId>sfg.brewery</groupId>-->
     <artifactId>brewery-monolith</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <description>SFG Brewery Monolith UI</description>
+
+    <licenses>
+        <license>
+            <name>GNU General Public License v3.0</name>
+            <url>https://www.gnu.org/licenses/gpl.txt</url>
+        </license>
+    </licenses>
+
+    <organization>
+        <name>Spring Framework Guru</name>
+    </organization>
+
+    <developers>
+        <developer>
+            <name>John Thompson</name>
+            <organization>Spring Framework Guru</organization>
+        </developer>
+    </developers>
     
     <properties>
         <!-- Web dependencies -->
