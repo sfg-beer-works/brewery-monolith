@@ -14,24 +14,25 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package guru.sfg.brewery.web.services;
 
-import guru.sfg.brewery.domain.Brewery;
-import guru.sfg.brewery.repositories.BreweryRepository;
-import org.springframework.stereotype.Service;
+package guru.sfg.brewery.config;
 
-import java.util.List;
+import org.hibernate.Interceptor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernatePropertiesCustomizer;
+import org.springframework.context.annotation.Configuration;
 
-@Service
-public class BreweryServiceImpl implements BreweryService{
+import java.util.Map;
 
-    private BreweryRepository breweryRepository;
-    public BreweryServiceImpl(BreweryRepository breweryRepository) {
-        this.breweryRepository = breweryRepository;
-    }
+@Configuration
+public class HibernateConfig implements HibernatePropertiesCustomizer {
+
+    @Autowired
+    Interceptor orderHeaderInterceptor;
 
     @Override
-    public List<Brewery> getAllBreweries() {
-        return breweryRepository.findAll();
+    public void customize(Map<String, Object> hibernateProperties) {
+        hibernateProperties.put("hibernate.ejb.interceptor", orderHeaderInterceptor);
     }
+
 }

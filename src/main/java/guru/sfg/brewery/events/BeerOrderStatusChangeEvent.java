@@ -14,12 +14,27 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package guru.sfg.brewery.web.services;
 
-import guru.sfg.brewery.domain.Brewery;
+package guru.sfg.brewery.events;
 
-import java.util.List;
+import guru.sfg.brewery.domain.BeerOrder;
+import guru.sfg.brewery.domain.OrderStatusEnum;
+import org.springframework.context.ApplicationEvent;
 
-public interface BreweryService {
-    List<Brewery> getAllBreweries();
+public class BeerOrderStatusChangeEvent extends ApplicationEvent {
+
+    private final OrderStatusEnum previousStatus;
+
+    public BeerOrderStatusChangeEvent(BeerOrder source, OrderStatusEnum previousStatus) {
+        super(source);
+        this.previousStatus = previousStatus;
+    }
+
+    public OrderStatusEnum getPreviousStatus() {
+        return previousStatus;
+    }
+
+    public BeerOrder getBeerOrder(){
+        return (BeerOrder) this.source;
+    }
 }

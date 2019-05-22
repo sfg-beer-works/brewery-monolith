@@ -14,30 +14,12 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
+package guru.sfg.brewery.services;
 
-package guru.sfg.brewery.web.model;
+import guru.sfg.brewery.domain.Brewery;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import java.util.List;
 
-import java.time.OffsetDateTime;
-import java.util.UUID;
-
-@Data
-@NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class BeerOrderLineDto extends BaseItem {
-
-    @Builder
-    public BeerOrderLineDto(UUID id, Integer version, OffsetDateTime createdDate, OffsetDateTime lastModifiedDate,
-                            UUID beerId, Integer orderQuantity) {
-        super(id, version, createdDate, lastModifiedDate);
-        this.beerId = beerId;
-        this.orderQuantity = orderQuantity;
-    }
-
-    private UUID beerId;
-    private Integer orderQuantity = 0;
+public interface BreweryService {
+    List<Brewery> getAllBreweries();
 }

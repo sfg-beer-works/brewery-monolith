@@ -1,7 +1,7 @@
 package guru.sfg.brewery.web.controllers;
 
 import guru.sfg.brewery.domain.Brewery;
-import guru.sfg.brewery.web.services.BreweryService;
+import guru.sfg.brewery.services.BreweryService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -57,7 +57,7 @@ public class BeerOrder extends BaseEntity {
     @ManyToOne
     private Customer customer;
 
-    @OneToMany(mappedBy = "beerOrder", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "beerOrder", cascade = CascadeType.ALL)
     @Fetch(FetchMode.JOIN)
     private Set<BeerOrderLine> beerOrderLines;
 
