@@ -42,6 +42,7 @@ class BeerControllerTest {
     MockMvc mockMvc;
     Page<Beer> beers;
     Page<Beer> pagedResponse;
+
     @BeforeEach
     void setUp() {
         beerList = new ArrayList<Beer>();
