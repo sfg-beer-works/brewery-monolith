@@ -22,31 +22,30 @@ import java.util.UUID;
 
 
 @RequestMapping("/beers")
-    @Controller
+@Controller
+public class BeerController {
 
-    public class BeerController {
+    //ToDO: Add service
+    private BeerRepository beerRepository;
+    private BeerInventoryRepository beerInventoryRepository;
 
-       //ToDO: Add service
-        private BeerRepository beerRepository;
-        private BeerInventoryRepository beerInventoryRepository;
+    public BeerController(BeerRepository beerRepository, BeerInventoryRepository beerInventoryRepository) {
+        this.beerRepository = beerRepository;
+        this.beerInventoryRepository = beerInventoryRepository;
+    }
 
-        public BeerController(BeerRepository beerRepository, BeerInventoryRepository beerInventoryRepository) {
-            this.beerRepository = beerRepository;
-            this.beerInventoryRepository=beerInventoryRepository;
-        }
-
-        @RequestMapping("/find")
-        public String findBeers(Model model){
-            model.addAttribute("beer", Beer.builder().build());
-            return "beers/findBeers";
-        }
+    @RequestMapping("/find")
+    public String findBeers(Model model) {
+        model.addAttribute("beer", Beer.builder().build());
+        return "beers/findBeers";
+    }
 
     @GetMapping
-    public String processFindFormReturnMany(Beer beer, BindingResult result, Model model){
-       // find beers by name
+    public String processFindFormReturnMany(Beer beer, BindingResult result, Model model) {
+        // find beers by name
         //ToDO: Add Service
         //ToDO: Get paging data from view
-        Page<Beer> pagedResult = beerRepository.findAllByBeerName(beer.getBeerName(), createPageRequest(0,10,Sort.Direction.DESC,"beerName"));
+        Page<Beer> pagedResult = beerRepository.findAllByBeerName(beer.getBeerName(), createPageRequest(0, 10, Sort.Direction.DESC, "beerName"));
         List<Beer> beerList = pagedResult.getContent();
         if (beerList.isEmpty()) {
             // no beers found
@@ -90,14 +89,14 @@ import java.util.UUID;
                 .upc(beer.getUpc())
                 .build();
 
-       Beer savedBeer= beerRepository.save(newBeer);
-       return "redirect:/beers/" + savedBeer.getId();
-        }
+        Beer savedBeer = beerRepository.save(newBeer);
+        return "redirect:/beers/" + savedBeer.getId();
+    }
 
     @GetMapping("/{beerId}/edit")
     public String initUpdateBeerForm(@PathVariable UUID beerId, Model model) {
-        if(beerRepository.findById(beerId).isPresent())
-              model.addAttribute("beer", beerRepository.findById(beerId).get());
+        if (beerRepository.findById(beerId).isPresent())
+            model.addAttribute("beer", beerRepository.findById(beerId).get());
         return "beers/createOrUpdateBeer";
     }
 
@@ -107,7 +106,7 @@ import java.util.UUID;
             return "beers/createOrUpdateBeer";
         } else {
             //ToDO: Add Service
-            Beer savedBeer =  beerRepository.save(beer);
+            Beer savedBeer = beerRepository.save(beer);
             return "redirect:/beers/" + savedBeer.getId();
         }
     }
@@ -117,6 +116,6 @@ import java.util.UUID;
                 size,
                 new Sort(sortDirection, propertyName));
     }
-    }
+}
 
 
