@@ -23,7 +23,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.OffsetDateTime;
-import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -32,13 +31,10 @@ import java.util.UUID;
 public class CustomerDto extends BaseItem {
 
     @Builder
-    public CustomerDto(UUID id, Integer version, OffsetDateTime createdDate, OffsetDateTime lastModifiedDate, String name,
-                       List<CreditCardDto> creditCards) {
+    public CustomerDto(UUID id, Integer version, OffsetDateTime createdDate, OffsetDateTime lastModifiedDate, String name) {
         super(id, version, createdDate, lastModifiedDate);
         this.name = name;
-        this.creditCards = creditCards;
     }
 
     private String name;
-    private List<CreditCardDto> creditCards;
 }
