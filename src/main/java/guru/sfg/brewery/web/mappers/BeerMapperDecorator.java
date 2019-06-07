@@ -1,6 +1,7 @@
 package guru.sfg.brewery.web.mappers;
 
 import guru.sfg.brewery.domain.Beer;
+import guru.sfg.brewery.domain.BeerInventory;
 import guru.sfg.brewery.web.model.BeerDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -21,9 +22,8 @@ public abstract class BeerMapperDecorator implements BeerMapper{
         BeerDto dto = beerMapper.beerToBeerDto(beer);
 
         if(beer.getBeerInventory() != null && beer.getBeerInventory().size() > 0) {
-
             dto.setQuantityOnHand(beer.getBeerInventory()
-                    .stream().map(beerInventory -> beerInventory.getQuantityOnHand())
+                    .stream().map(BeerInventory::getQuantityOnHand)
                     .reduce(0, Integer::sum));
 
         }
