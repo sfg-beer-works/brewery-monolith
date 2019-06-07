@@ -36,6 +36,9 @@ import java.util.UUID;
 public class DefaultBreweryLoader implements CommandLineRunner {
 
     public static final String TASTING_ROOM = "Tasting Room";
+    public static final String BEER_1_UPC = "0631234200036";
+    public static final String BEER_2_UPC = "0631234300019";
+    public static final String BEER_3_UPC = "0083783375213";
     private final BreweryRepository breweryRepository;
     private final BeerRepository beerRepository;
     private final CustomerRepository customerRepository;
@@ -75,7 +78,7 @@ public class DefaultBreweryLoader implements CommandLineRunner {
                     .beerStyle(BeerStyleEnum.IPA)
                     .minOnHand(12)
                     .quantityToBrew(200)
-                    .upc(337010000001L)
+                    .upc(BEER_1_UPC)
                     .build();
 
             beerRepository.save(mangoBobs);
@@ -85,7 +88,7 @@ public class DefaultBreweryLoader implements CommandLineRunner {
                     .beerStyle(BeerStyleEnum.PALE_ALE)
                     .minOnHand(12)
                     .quantityToBrew(200)
-                    .upc(337010000002L)
+                    .upc(BEER_2_UPC)
                     .build();
 
             beerRepository.save(galaxyCat);
@@ -95,7 +98,7 @@ public class DefaultBreweryLoader implements CommandLineRunner {
                     .beerStyle(BeerStyleEnum.PORTER)
                     .minOnHand(12)
                     .quantityToBrew(200)
-                    .upc(337010000003L)
+                    .upc(BEER_3_UPC)
                     .build();
 
             beerRepository.save(pinball);
