@@ -2,4 +2,3 @@
 # Brewery UI Monolith
 
 My work decomposing a legacy monolithic application.
-.
