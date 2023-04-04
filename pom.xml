@@ -45,7 +45,7 @@
         <!--set this to your docker acct name-->
         <docker.image.prefix>sfgbeerworks</docker.image.prefix>
         <!--Set to name of project-->
-        <docker.image.name>${artifactId}</docker.image.name>
+        <docker.image.name>${project.artifactId}</docker.image.name>
     </properties>
 
     <dependencies>
